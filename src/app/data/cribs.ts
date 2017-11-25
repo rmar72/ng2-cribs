@@ -65,4 +65,4 @@ export const cribs =  [
       "area": 1788,
       "image":"crib-6"
     }
-]
+];
