@@ -1,5 +1,12 @@
 <!-- <p> {{ cribs | json}} </p> -->
 
 <div *ngFor="let crib of cribs">
+
+
+    <!-- Property Binding -->
+    <!-- we use a property crib and it holds the crib element from the repeater -->
+    <!-- we grab this crib value and send it to the other end which is the component class -->
     <app-crib-card [crib]="crib" class="col-sm-4"></app-crib-card>
+
+    
 </div>

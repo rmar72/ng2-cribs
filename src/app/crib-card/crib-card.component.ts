@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Crib } from './../crib';
+                        // we specify we are getting input from the other end
+                        // the html property binding
+
+import {Crib } from './../crib'; //importing crib interface                
 
 @Component({
   selector: 'app-crib-card',
@@ -8,7 +11,7 @@ import {Crib } from './../crib';
 })
 export class CribCardComponent implements OnInit {
 
-  @Input('crib') crib: Crib;
+  @Input('crib') crib: Crib; // using interface
 
   constructor() { }
 
