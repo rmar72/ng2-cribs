@@ -11,6 +11,8 @@ import { CribCardComponent } from './crib-card/crib-card.component';
 
 // for our service
 import { CribsService } from './services/cribs.service';
+import { UtilService } from './services/util.service';
+import { AddListingFormComponent } from './add-listing-form/add-listing-form.component';
 
 // es6 decorators take a configuration object & sit on top of classes
 @NgModule({
@@ -19,7 +21,8 @@ import { CribsService } from './services/cribs.service';
   declarations: [
     AppComponent,
     CribListingComponent,
-    CribCardComponent
+    CribCardComponent,
+    AddListingFormComponent
   ],
 
   // makes use of imported modules
@@ -30,7 +33,10 @@ import { CribsService } from './services/cribs.service';
   ],
 
   // calls injectable services
-  providers: [CribsService],
+  providers: [
+    CribsService,
+    UtilService
+  ],
 
   // root module that bootstraps app
   bootstrap: [AppComponent]
