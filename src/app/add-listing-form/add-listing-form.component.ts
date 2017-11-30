@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { CribsService } from './../services/cribs.service';
+import { CribsService } from './../services/cribs.service'; // need this class
 import { UtilService } from './../services/util.service';
-
 
 @Component({
   selector: 'app-add-listing-form',
@@ -11,9 +10,11 @@ import { UtilService } from './../services/util.service';
 })
 export class AddListingFormComponent implements OnInit {
 
+  @ViewChild('newCribForm') newCribForm: NgForm;
+
   propertyTypes: Array<string> = ['House', 'Condo', 'Duplex'];
   constructor(
-      public cribsService: CribsService,
+      public cribsService: CribsService, // need this class to use it in a method down below
       private utilService: UtilService
     ) { }
 
@@ -21,8 +22,12 @@ export class AddListingFormComponent implements OnInit {
    
   }
 
+  // calls the AddCrib method from crib service
   onCribSubmit(data): void {
-    console.log(data);
+    this.cribsService.addCrib(data);
+
+    //clears the form by using the ViewChild
+    this.newCribForm.reset();
   }
 
 }

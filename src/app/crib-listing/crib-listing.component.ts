@@ -19,23 +19,30 @@ export class CribListingComponent implements OnInit {
      private cribsService: CribsService
     ) { }
 
-  // makes an http request when this component is initiallized ( like a doc.ready )
+  // handles http request when this component is initiallized ( like a doc.ready )
   ngOnInit() {
     
     // http call before we moved it to a service
     // this.http.get('data/cribs.json')
     // .map(res => res.json())
-    // .subscribe(
+    // .subscribe( note how the http and map left and this subsribe was left here
     //   data => this.cribs = data,
     //   error => this.error = error.statusText
     // );
 
+    //essentially GET
     this.cribsService.getAllCribs()
     .subscribe(
         data => this.cribs = data,
         error => this.error = error.statusText
       );
-
+    
+    //essentially POST
+    this.cribsService.newCribSubject.subscribe(
+      data => this.cribs = [data, ...this.cribs]
+      //uses spread operator to assign the data first and then its items to the new value
+      // as soon as this executes the view picks up on the new changes in the cribs array
+    );
 
   }
 
